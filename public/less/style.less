@@ -1,8 +1,3 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
 /* 
     Created on : Jan 16, 2016, 10:55:43 PM
     Author     : Vladimir
@@ -42,13 +37,16 @@ header{
     text-align: center;
     
     .content {
-        margin-top: 40px;
-        height: 500px;
-        
+        margin-top: 40px;   
+        height: 400px;
+        text-align: left;
+       
         .message-box {
             display: block;
-            width: 550px;
-            height: 500px;
+            width: 600px;
+            box-sizing: border-box;
+            padding: 10px;
+            height: 400px;
             float: left;
             overflow: auto;
             background-color: #FFFFFF;
@@ -56,12 +54,46 @@ header{
         
         .user-box {
             display: block;
-            width: 200px;
-            height: 500px;
+            width: 180px;
+            height: 400px;
             float: right;
             overflow: auto;
             background-color: #FFFFFF;
         }
+    }
+    
+    .send-form {
+        margin-top: 20px;
+        height: 50px;
+
+        .send-message {
+            float: left;
+            width: 680px;
+            height: 70px;
+            box-sizing: border-box;
+            padding: 10px;
+            border-radius: 3px;
+        }
+
+        .send-button {
+            float: right;
+            width: 100px;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 3px;
+            color: #19469D;
+            background-color: #FFFFFF;
+            border: solid 1px #19469D;
+            transition: all .3s ease;
+            cursor: pointer;
+            
+            &:hover {
+                color: #FFFFFF;
+                background-color: #19469D;
+            }
+        }            
     }
 }
 
@@ -71,6 +103,14 @@ footer {
     background: #BBBBBB;
     position: absolute;
     bottom: 0;
+    text-align: center;
+    
+    p {
+        display: block;
+        width: 800px;
+        margin: 0 auto;
+        text-align: left;
+    }
 }
 
 
