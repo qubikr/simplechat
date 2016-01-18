@@ -61,6 +61,7 @@ header h1 {
   position: relative;
   clear: both;
   background-color: #FFFFFF;
+  font-size: 16px;
 }
 .main .content .message-box .message-list .message:after {
   content: '';
@@ -78,6 +79,7 @@ header h1 {
   position: absolute;
   top: -18px;
   left: 20px;
+  font-size: 14px;
 }
 .main .content .message-box .message-list .message .message-header .date {
   color: #666666;
@@ -89,13 +91,46 @@ header h1 {
 .main .content .message-box .message-list .message:last-child {
   margin-bottom: 50px;
 }
+.main .content .message-box .message-list .alert-message {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  margin: 15px;
+  float: left;
+  clear: both;
+  font-size: 16px;
+}
+.main .content .message-box .message-list .alert-message .date {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 12px;
+}
 .main .content .user-box {
   display: block;
   width: 180px;
   height: 400px;
   float: right;
-  overflow: auto;
   background-color: #F5F5E0;
+  position: relative;
+}
+.main .content .user-box h1 {
+  color: #19469D;
+  font-weight: normal;
+  font-size: 18px;
+  text-align: center;
+}
+.main .content .user-box .user-box-list {
+  width: 180px;
+  height: 360px;
+  display: block;
+  position: absolute;
+  top: 40;
+  left: 0;
+  overflow: auto;
+}
+.main .content .user-box .user-box-list .username {
+  margin: 5px 20px;
+  font-size: 16px;
 }
 .main .content .welcome-popup {
   display: block;

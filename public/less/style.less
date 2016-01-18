@@ -66,6 +66,7 @@ header{
                     position: relative;
                     clear: both;
                     background-color: #FFFFFF;
+                    font-size: 16px;
 
                     &:after {
                         content: '';
@@ -84,6 +85,7 @@ header{
                         position: absolute;
                         top: -18px;
                         left: 20px;
+                        font-size: 14px;
 
                         .date {
                             color: #666666;
@@ -98,7 +100,23 @@ header{
                     &:last-child {
                         margin-bottom: 50px;
                     }
-                }                
+                }   
+                
+                .alert-message {
+                    display: inline-block;
+                    background-color: rgba(255, 255, 255, .5);
+                    padding: 10px;
+                    margin: 15px;
+                    float: left;
+                    clear: both;
+                    font-size: 16px;
+                    
+                    .date {
+                        display: inline-block;
+                        margin-right: 10px;
+                        font-size: 12px;
+                    }
+                }
             }
         }
         
@@ -107,8 +125,30 @@ header{
             width: 180px;
             height: 400px;
             float: right;
-            overflow: auto;
             background-color: #F5F5E0;
+            position: relative;
+            
+            h1 {
+                color: #19469D;
+                font-weight: normal;
+                font-size: 18px;
+                text-align: center;
+            }
+            
+            .user-box-list {
+                width: 180px;
+                height: 360px;
+                display: block;
+                position: absolute;
+                top: 40;
+                left: 0;
+                overflow: auto;
+                
+                .username {
+                    margin: 5px 20px;
+                    font-size: 16px;
+                }
+            }
         }
         
         .welcome-popup {
