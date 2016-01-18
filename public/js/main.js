@@ -45,10 +45,11 @@
             messageContainer = doc.querySelector('#send-message'),
             sendButton = doc.querySelector('#send-button'),
             welcomePopup = doc.querySelector('#welcome-popup'),
+            popupErrMsg = welcomePopup.querySelector('.err-message'),
             usernameInput = doc.querySelector('#username'),
             usernameSubmit = doc.querySelector('#change-name');
-    
 
+    
         self.init = function(){
             chat.init();
             chat.messageSubscribe(handleMessages);
@@ -77,7 +78,7 @@
             
             if ('action' in data) {
                 switch(data.action.type) {
-                    case 'getName': self.changeName(data.action.name);break;
+                    case 'getName': self.changeName(data.action);break;
                     case 'confirmName': self.setName(data.action.name); break;
                 }
             }
@@ -98,12 +99,13 @@
                 }
                 
                 historyContainer.innerHTML += html;
+                historyContainer.scrollIntoView(false);
             }
 
             function generateMessage (message) {
-                return '<div class="message">' + 
+                return '<div class="message"><pre>' + 
                         message.text + 
-                        '<div class="message-header">' +
+                        '</pre><div class="message-header">' +
                             '<span class="username">' + (message.username || '') + '</span>' + 
                             '<span class="date">' + generateDate(message.timestamp) + '</span>' + 
                         '</div>' +
@@ -147,13 +149,21 @@
         }
         
         
-        self.changeName = function (name) {
+        self.changeName = function (data) {
             welcomePopup.className = welcomePopup.className.replace('hidden', '');
-            usernameInput.value = name;
+            usernameInput.value = data.name;
+
+            if (data.text) {
+               popupErrMsg.className = popupErrMsg.className.replace('hidden', '');
+               popupErrMsg.innerHTML = data.text;
+            } else {
+                if (!popupErrMsg.className.match('hidden')) {
+                    popupErrMsg.className = popupErrMsg.className + ' hidden';
+                }
+            }
             
             usernameSubmit.onclick = function(event) {
                 event.preventDefault();
-                
                 chat.sendMessage('setName', usernameInput.value);
                 usernameInput.value = '';
                 
