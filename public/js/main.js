@@ -4,6 +4,10 @@
 */
 (function(win, doc){
 
+    /**
+     * Simple websocket wrapper
+     * @param {constructor} SocketConstructor
+     */
     function Chat(SocketConstructor) {
         var self = this,
             socket = new SocketConstructor('ws://' + doc.location.host),
@@ -11,7 +15,6 @@
     
 
         self.init = function(){
-            
             socket.onmessage = function(event) {
                 for (var i = 0; i < messageHandlers.length; i++ ) {
                     messageHandlers[i](event.data);
@@ -33,7 +36,10 @@
         };
     };
     
-    
+    /**
+     * Chat Room controller constructor
+     * @param {Object} chat
+     */
     function ChatRoomController(chat) {
         var self = this;
         
@@ -49,7 +55,7 @@
             usernameInput = doc.querySelector('#username'),
             usernameSubmit = doc.querySelector('#change-name');
 
-    
+
         self.init = function(){
             chat.init();
             chat.messageSubscribe(handleMessages);
@@ -63,6 +69,10 @@
             };
         };
 
+        /**
+         * 
+         * @param {String} response - response from server
+         */
         function handleMessages(response) {
             var data = JSON.parse(response),
                 html;  
@@ -102,6 +112,13 @@
                 historyContainer.scrollIntoView(false);
             }
 
+
+            /** templates **/
+           
+            /**
+             * @param {Object} message
+             * @returns {String}
+             */
             function generateMessage (message) {
                 return '<div class="message"><pre>' + 
                         message.text + 
@@ -112,10 +129,18 @@
                         '</div>';
             };
             
+            /**
+             * @param {Strign} name
+             * @returns {String}
+             */
             function generateUserElement (name) {
                 return '<div class="username">' + name + '</div>';
             }
-            
+
+            /**
+             * @param {Object} message
+             * @returns {String}
+             */
             function generateAlert (message) {
                 return '<div class="alert-message">' + 
                             '<div class="date">' + 
@@ -125,6 +150,10 @@
                         '</div>';
             };
             
+            /**
+             * @param {Number} timestamp
+             * @returns {String}
+             */
             function generateDate (timestamp) {
                 var timeString = '',
                     date, currentDate;
@@ -148,7 +177,10 @@
             }
         }
         
-        
+        /**
+         * @param {Object} data
+         * @returns {undefined}
+         */
         self.changeName = function (data) {
             welcomePopup.className = welcomePopup.className.replace('hidden', '');
             usernameInput.value = data.name;
