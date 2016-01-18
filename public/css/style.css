@@ -53,7 +53,7 @@ header h1 {
   overflow: hidden;
 }
 .main .content .message-box .message-list .message {
-  padding: 5px 7px;
+  padding: 10px 12px;
   margin: 25px 5px 5px 5px;
   border-radius: 3px;
   display: inline-block;
@@ -65,6 +65,7 @@ header h1 {
 }
 .main .content .message-box .message-list .message pre {
   font: inherit;
+  margin: 0;
 }
 .main .content .message-box .message-list .message:after {
   content: '';

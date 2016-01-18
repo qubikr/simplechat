@@ -1,16 +1,16 @@
+/* 
+    Created on : Jan 16, 2016, 10:55:43 PM
+    Author     : Vladimir
+*/
 (function(win, doc){
 
     function Chat(SocketConstructor) {
         var self = this,
-            socket = new SocketConstructor('ws://' + doc.location.hostname + ':8001'),
+            socket = new SocketConstructor('ws://' + doc.location.host),
             messageHandlers = [];
     
 
         self.init = function(){
-            
-            socket.onopen = function() {
-               
-            };
             
             socket.onmessage = function(event) {
                 for (var i = 0; i < messageHandlers.length; i++ ) {

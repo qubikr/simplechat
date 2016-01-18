@@ -2,9 +2,9 @@
  * 
  * @type Module server|Module server
  */
-var server = require('./lib/server.js');
-var socketServer = require('./lib/sockets.js');
+//var server = require('./lib/server.js');
+var socketServer = require('./lib/server.js');
 
-server.start();
+//server.start();
 socketServer.start();
 
